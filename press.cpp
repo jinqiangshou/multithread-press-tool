@@ -90,8 +90,20 @@ void * press_thread(void * param)
 		/************************************************/
 		/*************压测逻辑写在此处！*****************/
 		/************************************************/
-		printf("%d,",pid);
-		
+		//常见的压测过程如下：
+		//struct sockaddr_in serv_addr;
+		//Step 1： connfd=socket(AF_INET, SOCK_STREAM, 0) 创建socket
+		//Step 2： bzero(&serv_addr, sizeof(serv_addr);
+		//         serv_addr.sin_family  = AF_INET;
+		//         serv_addr.sin_port    = htons(port);
+		//         serv_addr.sin_addr.s_addr=inet_addr(ip);
+		//Step 3:  connect(connfd, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr))建立连接
+		//Step 4:  memset(sendBuf, 0, sizeof(sendBuf);
+		//         snprintf(sendBuf, "Send Message");
+		//         send(connfd, sendBuf, length, 0); 发送数据
+		//Step 5:  recv(connfd, recvBuf, BUFFER_MAX_SIZE, 0); //接收数据
+		//Step 6:  校验数据
+		/************************************************/
 		pthread_mutex_lock(&g_counter_mutex);
 		needsend = --g_needsend;
 		pthread_mutex_unlock(&g_counter_mutex);

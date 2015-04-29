@@ -8,10 +8,6 @@
 #include "config.h"
 #include <sys/time.h>
 
-#define BUFFER_MAX_SIZE 10000
-#define CONF_FILE "./conf/press.conf"
-#define PRESS_MON_INTERVAL 5
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
@@ -28,6 +24,10 @@
 #include <fcntl.h>
 #include <string>
 #include <iostream>
+
+#define BUFFER_MAX_SIZE 10000
+#define CONF_FILE "./conf/press.conf"
+#define PRESS_MON_INTERVAL 5
 
 pthread_mutex_t g_cond_mutex;
 pthread_mutex_t g_counter_mutex;

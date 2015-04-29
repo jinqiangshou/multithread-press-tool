@@ -1,29 +1,25 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
+#include <sys/time.h>
 #include <netinet/tcp.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <string.h>
 #include <signal.h>
-#include "config.h"
-#include <sys/time.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <arpa/inet.h>
-
-#include <errno.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <sys/socket.h>
-#include <sys/wait.h>
-
-#include <unistd.h>
-#include <fcntl.h>
 #include <string>
-#include <iostream>
+
+#include "config.h"
 
 #define BUFFER_MAX_SIZE 10000
 #define CONF_FILE "./conf/press.conf"
